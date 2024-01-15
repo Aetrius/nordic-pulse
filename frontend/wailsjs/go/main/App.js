@@ -5,3 +5,11 @@
 export function Greet(arg1) {
   return window['go']['main']['App']['Greet'](arg1);
 }
+
+export function Ping() {
+  return window['go']['main']['App']['Ping']();
+}
+
+export function Pong() {
+  return window['go']['main']['App']['Pong']();
+}

@@ -11,7 +11,7 @@ function App() {
             <div id="navBar">
                 <NavAppBar />
             </div>    
-            <img src={logo} alt="logo"/>
+            {/* <img src={logo} alt="logo"/> */}
             <RemoteServer />
         </div>
     )

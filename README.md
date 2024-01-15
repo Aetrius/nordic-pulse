@@ -17,3 +17,23 @@ to this in your browser, and you can call your Go code from devtools.
 ## Building
 
 To build a redistributable, production mode package, use `wails build`.
+
+
+### installed packages
+go get -u github.com/prometheus-community/pro-bing
+
+
+go get -u github.com/aeden/traceroute
+
+
+## TODO 
+
+- Create a SQLLITE DB for Caching records
+- History table to visualize results
+- Health Page
+- Short Code for IP storage
+- IPERF3 integration
+- Traceroute fun
+- Compile results on Server, Avg Response, Ping time, per historical request.
+
+
