@@ -1,0 +1,21 @@
+
+#Monitor {
+    padding-top: 50px;
+
+}
+
+#field {
+    padding: 10px;
+}
+
+#PageBorder {
+    padding: 50px;
+    padding-top: 10px;
+}
+
+#PingBorder {
+    margin-top: 10px;
+    padding-top: 10px;
+    border: 2px solid #000; /* You can customize the width, style, and color */
+    border-radius: 10px;
+}

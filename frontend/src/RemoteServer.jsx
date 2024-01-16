@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Greet} from "../wailsjs/go/main/App";
 import {Ping} from "../wailsjs/go/main/App";
-import {Pong} from "../wailsjs/go/main/App";
 
 function RemoteServer() {
 
@@ -15,7 +14,7 @@ function RemoteServer() {
   }
 
   function ping() {
-    Ping().then(updateResultText);
+    Ping(name).then(updateResultText);
   }
 
   return (

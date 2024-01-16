@@ -3,6 +3,4 @@
 
 export function Greet(arg1:string):Promise<string>;
 
-export function Ping():Promise<string>;
-
-export function Pong():Promise<string>;
+export function Ping(arg1:string):Promise<string>;

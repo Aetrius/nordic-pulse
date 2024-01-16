@@ -4,6 +4,7 @@ import './App.css';
 import NavAppBar from './NavAppBar';
 import Dashboard from './Dashboard';
 import RemoteServer from './RemoteServer';
+import Monitor from './components/monitor/Monitor';
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
             </div>    
             {/* <img src={logo} alt="logo"/> */}
             <RemoteServer />
+            <Monitor />
         </div>
     )
 }

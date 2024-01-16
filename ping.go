@@ -1,12 +1,15 @@
 package main
 
 import (
-	"github.com/prometheus-community/pro-bing"
 	"fmt"
+
+	probing "github.com/prometheus-community/pro-bing"
 )
 
-func Pinger() string {
-	pinger, err := probing.NewPinger("www.google.com")
+func PingTarget(ipIn string) string {
+	pinger, err := probing.NewPinger(ipIn)
+	pinger.SetPrivileged(true)
+
 	if err != nil {
 		return fmt.Sprintf("Error creating pinger: %s", err)
 	}
@@ -23,8 +26,4 @@ func Pinger() string {
 
 	info := fmt.Sprintf("Success: %.2f", packetsSuccess)
 	return info
-}
-
-func pong() string {
-	return Pinger()
 }
