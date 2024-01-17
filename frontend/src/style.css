@@ -29,3 +29,7 @@ body {
     margin-top: 40px;
     background-color: red;
 }
+
+#input {
+    padding-top: 20px;
+}

@@ -23,7 +23,8 @@ func PingTarget(ipIn string) string {
 
 	stats := pinger.Statistics() // get send/receive/duplicate/rtt stats
 	packetsSuccess := ((float64(stats.PacketsRecv) / float64(stats.PacketsSent)) * 100)
+	packetLoss := stats.PacketLoss
 
-	info := fmt.Sprintf("Success: %.2f", packetsSuccess)
+	info := fmt.Sprintf("Success: %.2f, Packets Lost: %s", packetsSuccess, packetLoss)
 	return info
 }

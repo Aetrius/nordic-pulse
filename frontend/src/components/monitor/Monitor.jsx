@@ -83,7 +83,7 @@ function Monitor({ pingResults }) {
             <List>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="#simple-list">
-                  <ListItemText primary="Ping: N/A, IP: 0.0.0.0, response: 0 ms" />
+                  <ListItemText primary={pingResults} />
                 </ListItemButton>
               </ListItem>
             </List>
