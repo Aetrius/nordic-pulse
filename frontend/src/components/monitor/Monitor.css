@@ -19,3 +19,23 @@
     border: 2px solid #000; /* You can customize the width, style, and color */
     border-radius: 10px;
 }
+
+.flashing-text {
+    animation: flashText 1s ease-out; /* Adjust the duration as needed */
+  }
+  
+  @keyframes flashText {
+    0%,
+    15%,
+    100% {
+      color: lightgreen; /* Flashing text color */
+    }
+}
+
+.historyList .MuiTypography-root {
+    font-size: 11px !important; /* Set the font size for history list items */
+}
+
+.red-text {
+    color: red;
+  }

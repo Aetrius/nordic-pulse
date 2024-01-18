@@ -25,7 +25,7 @@ function NavAppBar() {
               <MenuIcon />
             </IconButton>
           
-            <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+            <Typography className="AppTitleText" variant="h5" component="div" sx={{ flexGrow: 1 }}>
               Nordic Pulse
             </Typography>
           </Box>

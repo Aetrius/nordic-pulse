@@ -27,6 +27,6 @@ func (a *App) Greet(name string) string {
 }
 
 // Greet returns a greeting for the given name
-func (a *App) Ping(name string) string {
-	return fmt.Sprintf(PingTarget(name))
+func (a *App) Ping(name string) Result {
+	return PingTarget(name)
 }

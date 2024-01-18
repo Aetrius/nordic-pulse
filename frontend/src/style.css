@@ -33,3 +33,27 @@ body {
 #input {
     padding-top: 20px;
 }
+
+.AppTitleText {
+    padding-top: 6px;
+}
+
+
+.btn:hover:not([disabled]) {
+    background-color: #4caf50; /* Change this to your desired hover color */
+}
+  
+.btn:disabled {
+cursor: not-allowed;
+opacity: 0.6;
+}
+
+.btn.running:hover {
+background-color: initial;
+/* Add any other styles for the running state */
+}
+
+.btn.disabled:hover {
+background-color: initial;
+/* Add any other styles for the disabled state */
+}

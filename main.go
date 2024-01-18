@@ -17,7 +17,7 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:  "nordic-pulse",
+		Title:  "Nordic Pulse - Network Monitoring - v1.01",
 		Width:  1024,
 		Height: 768,
 		AssetServer: &assetserver.Options{
