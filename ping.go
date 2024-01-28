@@ -1,38 +1,56 @@
 package main
 
 import (
+	"fmt"
 	"time"
-
+	"runtime"
 	probing "github.com/prometheus-community/pro-bing"
 )
 
 func PingTarget(ipIn string) Result {
 	pinger, err := probing.NewPinger(ipIn)
-	pinger.SetPrivileged(true)
-	result := Result{}
-
 	if err != nil {
-		return result
+		// handle error
+		//fmt.Println(err)
+		return Result{}
 	}
+
+	pinger = getRuntime(pinger)
+	result := Result{}
 
 	pinger.Count = 3
 	err = pinger.Run() // Blocks until finished.
 
 	if err != nil {
-		return result
+		// handle error
+		//fmt.Println(err)
+		return Result{}
 	}
 
 	stats := pinger.Statistics() // get send/receive/duplicate/rtt stats
 
 	result = Result{
-		PacketSuccess: ((float64(stats.PacketsRecv) / float64(stats.PacketsSent)) * 100),
+		PacketSuccess: (float64(stats.PacketsRecv) / float64(stats.PacketsSent)) * 100,
 		PacketLoss:    stats.PacketLoss,
-		RTT:           stats.MaxRtt / 100000,
+		RTT:           stats.MaxRtt / 1000000, // corrected scale to microseconds
 		Timestamp:     getCurrentTime(),
 	}
 
-	//info := fmt.Sprintf("Success: %.2f, Packets Lost: %s", packetsSuccess, packetLoss)
+	//fmt.Println(result)
 	return result
+}
+
+func getRuntime(pingerIn *probing.Pinger) *probing.Pinger {
+	switch runtime.GOOS {
+	case "darwin":
+		pingerIn.SetPrivileged(false)
+	case "windows":
+		pingerIn.SetPrivileged(true)
+	default:
+		// for other OS, no specific privileges set
+	}
+
+	return pingerIn
 }
 
 func getCurrentTime() string {
