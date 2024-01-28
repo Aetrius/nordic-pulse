@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
 	"time"
 	"runtime"
 	probing "github.com/prometheus-community/pro-bing"
