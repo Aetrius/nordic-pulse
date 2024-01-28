@@ -24,6 +24,7 @@ go get -u github.com/prometheus-community/pro-bing
 
 
 go get -u github.com/aeden/traceroute
+go get -u github.com/pixelbender/go-traceroute/traceroute
 npm i recharts
 
 
