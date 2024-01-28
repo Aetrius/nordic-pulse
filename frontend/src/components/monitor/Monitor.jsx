@@ -119,7 +119,7 @@ function Monitor({ pingResults, isRunning }) {
             <Typography  variant="h5" gutterBottom>
               History
             </Typography>
-            <List >
+            <List className="pingHistoryList">
               {sortedResults.map((result, index) => (
                 <ListItem key={index} disablePadding>
                   <ListItemButton component="a">

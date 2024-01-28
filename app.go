@@ -30,3 +30,8 @@ func (a *App) Greet(name string) string {
 func (a *App) Ping(name string) Result {
 	return PingTarget(name)
 }
+
+// Greet returns a greeting for the given name
+// func (a *App) Trace(name string) string {
+// 	return Trace(name)
+// }
