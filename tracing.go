@@ -10,7 +10,7 @@ import (
 	"golang.org/x/net/ipv4"
 )
 
-func Trace() {
+func Trace(in string) {
 	ip := net.ParseIP("8.8.8.8")
 
 	conn, err := icmp.ListenPacket("ip4:icmp", "0.0.0.0")

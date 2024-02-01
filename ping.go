@@ -40,6 +40,10 @@ func PingTarget(ipIn string) Result {
 	return result
 }
 
+// SetPrivileged sets the type of ping pinger will send.
+// false means pinger will send an "unprivileged" UDP ping.
+// true means pinger will send a "privileged" raw ICMP ping.
+// NOTE: setting to true requires that it be run with super-user privileges.
 func getRuntime(pingerIn *probing.Pinger) *probing.Pinger {
 	switch runtime.GOOS {
 	case "darwin":

@@ -32,6 +32,6 @@ func (a *App) Ping(name string) Result {
 }
 
 // Greet returns a greeting for the given name
-// func (a *App) Trace(name string) string {
-// 	return Trace(name)
-// }
+func (a *App) Trace(name string) string {
+	return Trace(name)
+}
