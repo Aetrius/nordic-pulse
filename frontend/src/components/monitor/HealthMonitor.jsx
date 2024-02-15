@@ -10,7 +10,7 @@ const CustomTooltip = ({ active, payload, label }) => {
       <div className="custom-tooltip">
         <p className="label">{`Time: ${label}`}</p>
         {payload.map((item, index) => (
-          <p key={index} className="value" style={{ color: 'lightblue', fill: 'lightblue' }}>
+          <p key={index} className="value" style={{ color: item.color, fill: item.color }}>
             {`${item.name}: ${item.value}`}
           </p>
         ))}
@@ -28,10 +28,10 @@ function HealthMonitor({ pingResults }) {
   }
 
   const chartData = pingResults.map(result => ({
-    timestamp: moment(result.timestamp).format('mm:ss'), // Format to display only time
-    packetSuccess: result.packetSuccess,
-    packetLoss: result.packetLoss,
-    rtt: result.rtt,
+    timestamp: moment(result.timestamp).format('mm:ss'),
+    packetSuccess: { value: result.packetSuccess, color: '#8884d8' },
+    packetLoss: { value: result.packetLoss, color: '#FF0000' },
+    rtt: { value: result.rtt, color: '#82ca9d' },
   }));
 
   // Calculate the interval dynamically based on the length of data
@@ -51,9 +51,9 @@ function HealthMonitor({ pingResults }) {
           <YAxis />
           <Tooltip content={<CustomTooltip />} />
           <Legend />
-          <Line type="monotone" dataKey="packetSuccess" stroke="#8884d8" name="Packet Success" dot={false} />
-          <Line type="monotone" dataKey="packetLoss" stroke="#FF0000" name="Packet Loss" dot={false} />
-          <Line type="monotone" dataKey="rtt" stroke="#82ca9d" name="Round Trip Max" dot={false} />
+          <Line type="monotone" dataKey="packetSuccess.value" stroke="#8884d8" name="Packet Success" dot={false} />
+          <Line type="monotone" dataKey="packetLoss.value" stroke="#FF0000" name="Packet Loss" dot={false} />
+          <Line type="monotone" dataKey="rtt.value" stroke="#82ca9d" name="Round Trip Max" dot={false} />
         </LineChart>
       </ResponsiveContainer>
     // </div>

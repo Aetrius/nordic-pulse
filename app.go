@@ -26,12 +26,12 @@ func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
 }
 
-// Greet returns a greeting for the given name
-func (a *App) Ping(name string) Result {
-	return PingTarget(name)
+// Ping returns a ping result for a string IP
+func (a *App) Ping(ip string) Result {
+	return PingTarget(ip)
 }
 
-// Greet returns a greeting for the given name
-func (a *App) Trace(name string) string {
-	return Trace(name)
+// Trace returns a trace result for a string IP
+func (a *App) Merp(ip string) string {
+	return TraceRoute(ip)
 }

@@ -68,6 +68,10 @@ function RemoteServer({ onResultChange }) {
     setIsRunning(false);
   };
 
+  const clear = () => {
+    
+  };
+
   return (
     <div id="RemoteServer">
       {/* <div id="result" className="result">{resultText}</div> */}

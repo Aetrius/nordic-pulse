@@ -4,4 +4,6 @@ import {main} from '../models';
 
 export function Greet(arg1:string):Promise<string>;
 
+export function Merp(arg1:string):Promise<string>;
+
 export function Ping(arg1:string):Promise<main.Result>;

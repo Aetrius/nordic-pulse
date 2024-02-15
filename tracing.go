@@ -10,8 +10,8 @@ import (
 	"golang.org/x/net/ipv4"
 )
 
-func Trace(in string) {
-	ip := net.ParseIP("8.8.8.8")
+func TraceRoute(name string) string {
+	ip := net.ParseIP(name)
 
 	conn, err := icmp.ListenPacket("ip4:icmp", "0.0.0.0")
 	if err != nil {
@@ -50,5 +50,7 @@ func Trace(in string) {
 		}
 
 		fmt.Printf("%d. %s %.3f ms\n", ttl, ip.String(), float64(elapsed.Nanoseconds())/1e6)
+		
 	}
+	return "helloworld"
 }

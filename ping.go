@@ -24,7 +24,15 @@ func PingTarget(ipIn string) Result {
 	if err != nil {
 		// handle error
 		//fmt.Println(err)
-		return Result{}
+
+		errorResult := Result{
+			PacketSuccess: 0.00 * 100,
+			PacketLoss:    100,
+			RTT:           30, // corrected scale to microseconds
+			Timestamp:     getCurrentTime(),
+		}
+
+		return errorResult
 	}
 
 	stats := pinger.Statistics() // get send/receive/duplicate/rtt stats
