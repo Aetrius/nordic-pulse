@@ -4,7 +4,7 @@
 A simple network GUI monitor to track the ping health of a target endpoint. A visualization chart is kept running in the background
 IPs/Hostnames are cached using a cookie for 365 days, it will persist through exe updates or moving exe locations.
 
-![nordic-pulse](https://github.com/Aetrius/nordic-pulse/main/pulse-1-03.png)
+![nordic-pulse](https://github.com/Aetrius/nordic-pulse/blob/main/pulse-1-03.png)
 
 ## Live Development
 
