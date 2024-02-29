@@ -6,7 +6,7 @@ toolchain go1.21.0
 
 require (
 	github.com/prometheus-community/pro-bing v0.3.0
-	github.com/wailsapp/wails/v2 v2.7.1
+	github.com/wailsapp/wails/v2 v2.8.0
 	golang.org/x/net v0.20.0
 )
 

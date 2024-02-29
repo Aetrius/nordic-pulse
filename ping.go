@@ -1,30 +1,30 @@
 package main
 
 import (
-	//"fmt"
-	"time"
+	"context"
+
 	"runtime"
+	"time"
+
 	probing "github.com/prometheus-community/pro-bing"
 )
 
+const (
+	maxRTT          = 30 * time.Millisecond
+	microsecondUnit = 1000000
+	timeoutDuration = 5 * time.Second // Set a timeout duration
+)
+
 func PingTarget(ipIn string) Result {
+
+	// Create a context with a timeout
+	ctx, cancel := context.WithTimeout(context.Background(), timeoutDuration)
+	defer cancel()
+
+	ipIn = LookupIP((ipIn))
+
 	pinger, err := probing.NewPinger(ipIn)
 	if err != nil {
-		// handle error
-		//fmt.Println(err)
-		return Result{}
-	}
-
-	pinger = getRuntime(pinger)
-	result := Result{}
-
-	pinger.Count = 3
-	err = pinger.Run() // Blocks until finished.
-
-	if err != nil {
-		// handle error
-		//fmt.Println(err)
-
 		errorResult := Result{
 			PacketSuccess: 0.00 * 100,
 			PacketLoss:    100,
@@ -33,6 +33,27 @@ func PingTarget(ipIn string) Result {
 		}
 
 		return errorResult
+	}
+
+	pinger = getRuntime(pinger)
+	result := Result{}
+
+	pinger.Count = 3
+
+	// Run the pinger within the context
+	errChan := make(chan error, 1)
+	go func() {
+		errChan <- pinger.Run()
+	}()
+
+	select {
+	case err := <-errChan:
+		if err != nil {
+			return handleErrorResult(err)
+		}
+	case <-ctx.Done():
+		// Timeout occurred
+		return handleTimeoutResult()
 	}
 
 	stats := pinger.Statistics() // get send/receive/duplicate/rtt stats
@@ -44,7 +65,6 @@ func PingTarget(ipIn string) Result {
 		Timestamp:     getCurrentTime(),
 	}
 
-	//fmt.Println(result)
 	return result
 }
 
@@ -76,4 +96,22 @@ type Result struct {
 	PacketLoss    float64       `json:"packetLoss"`
 	RTT           time.Duration `json:"rtt"`
 	Timestamp     string        `json:"timestamp"`
+}
+
+func handleErrorResult(err error) Result {
+	return Result{
+		PacketSuccess: 0.00,
+		PacketLoss:    100,
+		RTT:           maxRTT / microsecondUnit,
+		Timestamp:     getCurrentTime(),
+	}
+}
+
+func handleTimeoutResult() Result {
+	return Result{
+		PacketSuccess: 0.00,
+		PacketLoss:    100,
+		RTT:           maxRTT / microsecondUnit,
+		Timestamp:     getCurrentTime(),
+	}
 }

@@ -21,11 +21,10 @@ To build a redistributable, production mode package, use `wails build`.
 
 ### installed packages
 go get -u github.com/prometheus-community/pro-bing
-
-
 go get -u github.com/aeden/traceroute
 go get -u github.com/pixelbender/go-traceroute/traceroute
 npm i recharts
+npm install @mui/material @emotion/react @emotion/styled
 
 
 ## TODO 
