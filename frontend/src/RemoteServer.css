@@ -1,0 +1,15 @@
+.trashData {
+    margin-left: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-inline: 10px;
+    width: 60px;
+    height: 30px;
+}
+
+#input.input-box {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+    width: 100%; /* Take up the full width of the parent container */
+}

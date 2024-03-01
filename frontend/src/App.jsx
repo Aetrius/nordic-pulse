@@ -13,7 +13,10 @@ function App() {
   const [isRunning, setIsRunning] = useState(false); // New state for isRunning
   //const [tracerouteKey, setTracerouteKey] = useState(0);
 
-  // const tracerouteData = ['Source', 'Router1', 'Router2', 'Destination'];
+  const clearData = () => {
+    // Clear the data slice
+    setParentResults([]);
+  };
 
   const handleResultChange = (result, runningState) => {
     // Append the new result to the array of parentResults
@@ -35,7 +38,7 @@ function App() {
         <NavAppBar />
       </div>
       {/* <img src={logo} alt="logo"/> */}
-      <RemoteServer onResultChange={handleResultChange} />
+      <RemoteServer onResultChange={handleResultChange} clearData={clearData}/>
       {/* <TracerouteMonitor width={100} height={100}/> */}
       {/* <HealthMonitor pingResults={parentResults}/>  */}
       <GraphMonitors parentResults={parentResults}/>
