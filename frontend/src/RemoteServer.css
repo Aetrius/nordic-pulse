@@ -13,3 +13,9 @@
     justify-content: center; /* Center content horizontally */
     width: 100%; /* Take up the full width of the parent container */
 }
+
+
+.trashData:hover {
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+}

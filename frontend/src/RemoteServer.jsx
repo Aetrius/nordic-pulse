@@ -72,6 +72,7 @@ function RemoteServer({ onResultChange, clearData }) {
 
   const clear = () => {
     clearData();
+    stopPingLoop();
   };
 
   return (

@@ -23,7 +23,7 @@ function App() {
     setParentResults(prevResults => {
       const newResults = [...prevResults, result];
       // Keep only the most recent 15 results
-      return newResults.slice(-1000);
+      return newResults.slice(-10000);
     });
 
     // Update the isRunning state
