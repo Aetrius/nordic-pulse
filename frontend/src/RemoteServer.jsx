@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Ping } from "../wailsjs/go/main/App";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import './RemoteServer.css';
 
-function RemoteServer({ onResultChange }) {
+function RemoteServer({ onResultChange, clearData }) {
   const [resultText, setResultText] = useState();
   const [name, setName] = useState('');
   const [isRunning, setIsRunning] = useState(false);
@@ -69,7 +71,8 @@ function RemoteServer({ onResultChange }) {
   };
 
   const clear = () => {
-    
+    clearData();
+    stopPingLoop();
   };
 
   return (
@@ -92,6 +95,8 @@ function RemoteServer({ onResultChange }) {
         <button className={`btn ${!isRunning ? 'disabled' : ''}`}
           onClick={stopPingLoop}
           disabled={!isRunning}>Stop</button>
+        <button className="trashData"
+          onClick={clear}><DeleteForeverIcon fontSize="medium"/></button>
       </div>
     </div>
   );
