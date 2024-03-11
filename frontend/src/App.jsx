@@ -7,7 +7,7 @@ import Exports from './Exports';
 import Updates from './Updates';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('Updates'); // Default view
+  const [currentPage, setCurrentPage] = useState('Dashboard'); // Default view
   const [key, setKey] = useState(0);
 
   const handleMenuClick = (option) => {

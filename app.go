@@ -66,9 +66,8 @@ func (a *App) ApplyUpdate() bool {
 	// Wait for the download to complete or a timeout
 	select {
 	case <-downloadCompleted:
-		// Download completed successfully
-		// Continue with the relaunch
-		writeDebugInfo(GetPath(GetApplicationPath()) + "\\debug.txt")
+		// DEBUG text file
+		//writeDebugInfo(GetPath(GetApplicationPath()) + "\\debug.txt")
 		RelaunchApp(GetPath(GetApplicationPath())+"\\nordic-pulse-updater.exe", GetApplicationPath(), GetPath(GetApplicationPath())+"\\"+GetPathFile(UpdateCheck().RemoteUpdateURL))
 	case <-a.ctx.Done():
 		// Context canceled, return false or handle accordingly
