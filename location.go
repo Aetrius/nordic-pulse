@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 )
 
-func getPath() string {
+func GetApplicationPath() string {
 	exePath, err := os.Executable()
 	if err != nil {
 		fmt.Println("Error getting executable path:", err)

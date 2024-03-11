@@ -1,6 +1,6 @@
 {
   "$schema": "https://wails.io/schemas/config.v2.json",
-  "name": "nordic-pulse",
+  "name": "Aetrius Software Engineering LLC",
   "outputfilename": "nordic-pulse",
   "assetdir": "",
   "frontend:install": "npm install",
@@ -12,6 +12,6 @@
     "email": "tylerbennet@rivian.com"
   },
   "info": {
-    "productVersion": "1.4.0"
+    "productVersion": "1.4.4"
   }
 }
