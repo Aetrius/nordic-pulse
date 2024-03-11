@@ -6,6 +6,7 @@ toolchain go1.21.0
 
 require (
 	github.com/prometheus-community/pro-bing v0.3.0
+	github.com/tidwall/gjson v1.17.1
 	github.com/wailsapp/wails/v2 v2.8.0
 	golang.org/x/net v0.20.0
 )
@@ -28,6 +29,8 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/samber/lo v1.39.0 // indirect
+	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/tkrajina/go-reflector v0.5.6 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect

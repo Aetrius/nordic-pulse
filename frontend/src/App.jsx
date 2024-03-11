@@ -1,49 +1,35 @@
-import React, { useState } from 'react';
-import logo from './assets/images/viking-ship.png';
-import './App.css';
+// App.jsx
+import React, { useState, useEffect } from 'react';
 import NavAppBar from './NavAppBar';
-import RemoteServer from './RemoteServer';
-import Monitor from './components/monitor/Monitor';
-import HealthMonitor from './components/monitor/HealthMonitor';
-// import TracerouteMonitor from './components/monitor/TracerouteMonitor';
-import GraphMonitors from './components/monitor/GraphMonitors';
+import Dashboard from './Dashboard';
+import Settings from './Settings';
+import Exports from './Exports';
+import Updates from './Updates';
 
 function App() {
-  const [parentResults, setParentResults] = useState([]);
-  const [isRunning, setIsRunning] = useState(false); // New state for isRunning
-  //const [tracerouteKey, setTracerouteKey] = useState(0);
+  const [currentPage, setCurrentPage] = useState('Updates'); // Default view
+  const [key, setKey] = useState(0);
 
-  const clearData = () => {
-    // Clear the data slice
-    setParentResults([]);
+  const handleMenuClick = (option) => {
+    console.log(`Selected option: ${option}`);
+    setCurrentPage(option);
+    setKey(prevKey => prevKey + 1); // Change the key to force a re-render
   };
 
-  const handleResultChange = (result, runningState) => {
-    // Append the new result to the array of parentResults
-    setParentResults(prevResults => {
-      const newResults = [...prevResults, result];
-      // Keep only the most recent 15 results
-      return newResults.slice(-10000);
-    });
-
-    // Update the isRunning state
-    setIsRunning(runningState);
-
-    //setTracerouteKey((prevKey) => prevKey + 1);
-  };
+  useEffect(() => {
+    // Your side effect logic here
+  }, [currentPage]);
 
   return (
     <div id="App">
       <div id="navBar">
-        <NavAppBar />
+        <NavAppBar onMenuClick={handleMenuClick} />
       </div>
-      {/* <img src={logo} alt="logo"/> */}
-      <RemoteServer onResultChange={handleResultChange} clearData={clearData}/>
-      {/* <TracerouteMonitor width={100} height={100}/> */}
-      {/* <HealthMonitor pingResults={parentResults}/>  */}
-      <GraphMonitors parentResults={parentResults}/>
-      <Monitor pingResults={parentResults} isRunning={isRunning}/>
-      
+
+      {currentPage === 'Dashboard' && <Dashboard />}
+      {currentPage === 'Settings' && <Settings />}
+      {currentPage === 'Exports' && <Exports />}
+      {currentPage === 'Updates' && <Updates />}
     </div>
   );
 }
