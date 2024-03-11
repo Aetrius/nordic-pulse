@@ -31,6 +31,20 @@ func (a *App) Ping(ip string) Result {
 	return PingTarget(ip)
 }
 
+// Runs an update check against the remote server
+func (a *App) Update() bool {
+	url, ver := UpdateCheck()
+	fmt.Println(GetAppVersion() + "vs" + ver)
+	fmt.Println(url)
+
+	if ver != GetAppVersion() {
+		return true
+	} else {
+		return false
+	}
+
+}
+
 // Trace returns a trace result for a string IP
 func (a *App) Merp(ip string) string {
 	return TraceRoute(ip)

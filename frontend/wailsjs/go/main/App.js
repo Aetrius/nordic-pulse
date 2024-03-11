@@ -13,3 +13,7 @@ export function Merp(arg1) {
 export function Ping(arg1) {
   return window['go']['main']['App']['Ping'](arg1);
 }
+
+export function Update() {
+  return window['go']['main']['App']['Update']();
+}
